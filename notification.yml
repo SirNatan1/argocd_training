@@ -2,8 +2,5 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapp
-  namespace: argocd
   annotations:
     notifications.argoproj.io/subscribe.coralogix-on-success.coralogix: ""
-spec:
-  project: default
