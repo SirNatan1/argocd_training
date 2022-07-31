@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+data:
+  service.webhook.coralogix: |
+    url: https://webapi.coralogix.com/api/v1/external/tags
+    headers:
+    - name: Authorization
+      value: Bearer $coralogix-api-token
+    - name: Content-Type
+      value: application/json
+  template.coralogix: |
+    webhook:
+      coralogix:
+        method: POST
+        body: |
+          {
+            "name": "{{.app.status.sync.revision}}",
+            "application": ["{{.app.spec.project}}"],
+            "subsystem": ["{{.app.metadata.name}}"],
+            "iconUrl": "https://raw.githubusercontent.com/coralogix/integrations-docs/master/integrations/argocd/images/argocd.png"
+          }
+  trigger.coralogix-on-success: |
+    - when: app.status.operationState.phase in ['Succeeded']
+      send: [coralogix]
