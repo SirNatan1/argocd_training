@@ -12,7 +12,7 @@ spec:
     path: guestbook
   destination:
     server: https://kubernetes.default.svc
-    namespce: myapp
+    namespace: myapp
 
   syncPolicy:
     syncOptions:
