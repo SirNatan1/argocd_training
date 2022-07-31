@@ -11,7 +11,7 @@ spec:
     targetRevision: HEAD
     path: guestbook
   destination:
-    server: https://kubernetes.defaul.svc
+    server: https://kubernetes.default.svc
     namespce: myapp
 
   syncPolicy:
