@@ -5,5 +5,3 @@ metadata:
   namespace: myapp
   annotations:
     notifications.argoproj.io/subscribe.coralogix-on-success.coralogix: ""
-spec:
-  project: default
